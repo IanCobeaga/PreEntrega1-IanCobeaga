@@ -11,7 +11,6 @@ function App() {
   const [greeting, setGreeting] = useState("HOLA MUNDO!");
 
   const changeGreeting = (text) => {
-      console.log(text);
       setGreeting(text);
   }
 
