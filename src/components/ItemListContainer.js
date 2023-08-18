@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import Images from '../img/images.js'
 
 const ItemListContainer = ({ greeting }) => {
     return (
@@ -7,7 +8,7 @@ const ItemListContainer = ({ greeting }) => {
             <div className="col">
             </div>
             <div className="col">
-                <Card title={greeting}/>
+                <Card title={greeting} img={Images}/>
             </div>
             <div className="col">
             </div>
