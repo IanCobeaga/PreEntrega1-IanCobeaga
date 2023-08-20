@@ -30,3 +30,13 @@
     background-color: transparent;
     border: none;
 }
+
+.d-flex-card{
+    display: flex!important; 
+    justify-content: space-between;
+    align-items: center
+}
+
+.m-form{
+    margin-right: 10px;
+}

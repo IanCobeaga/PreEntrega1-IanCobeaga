@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({img, name, description, price}) => {
+const ItemDetailContainer = ({img, name, description, price}) => {
     return (
         <div className="card h-100">
             <img src={img} className="card-img-top" alt="..." />
@@ -16,4 +16,4 @@ const Card = ({img, name, description, price}) => {
     );
 };
 
-export default Card;
+export default ItemDetailContainer;
