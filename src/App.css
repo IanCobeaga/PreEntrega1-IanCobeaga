@@ -40,3 +40,12 @@
 .m-form{
     margin-right: 10px;
 }
+
+@font-face {
+    font-family: 'CrilleeBoldItalicStdRegular';
+    src:  url('./Fonts/Crillee\ Bold\ Italic\ Std\ Regular.otf');
+
+} 
+.spiderPrimaryFont{
+  font-family: 'CrilleeBoldItalicStdRegular';
+} 

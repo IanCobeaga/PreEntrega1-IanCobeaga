@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Card from "../Components/Card";
 
-const ItemDetailContainer = ({img, name, description, price}) => {
+const ItemDetailContainer = () => {
+
+    const [productos, setProductos] = useState([]);
+    //const [producto, setProducto] = useState({});
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetch("https://apimocha.com/spideritems/items")
+            .then((res) => res.json())
+            .then(data => setProductos(data.results));
+        setProductos(productos);
+    }, [])
+
     return (
-        <div className="card h-100">
-            <img src={img} className="card-img-top" alt="..." />
-            <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text">{description}</p>
+        <>
+            <div className="top-space row row-cols-1 row-cols-md-3 g-4">
+                <div className="col">
+                </div>
+                <div>
+                    {productos.filter((producto) => {
+                        if (producto.id === id) {
+                            return (
+                                <div key={producto.id} className="col">
+                                    <Card
+                                        id={producto.id}
+                                        img={producto.imgUrl}
+                                        name={producto.name}
+                                        description={producto.description}
+                                        price={producto.price}
+                                        isDetail={true} />
+                                </div>
+                            );
+                        }
+                    })}
+                </div>
+                <div className="col">
+                </div>
             </div>
-            <div className="card-footer d-flex-card">
-                <small className="text-muted">Precio: ${price}</small>
-                <button className="btn btn-outline-dark"> Ver detalle</button>
-            </div>
-        </div>
+        </>
     );
 };
 
