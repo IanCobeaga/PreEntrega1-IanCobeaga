@@ -14,7 +14,7 @@ const NavBar = () => {
                 <ul className="nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item dropdown mx-2">
                         <Link className="btn btn-outline-light" to={"/items"}>
-                            Productos
+                            Modelos
                         </Link>
                     </li>
                     <li className="nav-item dropdown">

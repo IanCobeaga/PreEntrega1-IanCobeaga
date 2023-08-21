@@ -31,6 +31,19 @@
     border: none;
 }
 
+.products{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit, 
+        minmax(
+            300px,
+            1fr
+        )
+    );
+    gap: 16px;
+}
+
 .d-flex-card{
     display: flex!important; 
     justify-content: space-between;
@@ -48,4 +61,10 @@
 } 
 .spiderPrimaryFont{
   font-family: 'CrilleeBoldItalicStdRegular';
+  color: #fff;
 } 
+/* 
+body{
+    background-image: url("https://i.pinimg.com/originals/8c/06/17/8c0617017ae715c5ffe0817d53cdcf00.jpg");
+
+} */
