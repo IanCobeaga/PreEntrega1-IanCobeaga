@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../Components/Card";
+import { enviroment } from "../enviroments/Enviroments";
 
 const ItemListContainer = () => {
 
@@ -10,11 +11,11 @@ const ItemListContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch("https://apimocha.com/spideritems/items")
+        fetch(`${enviroment.urlItems}`)
             .then((res) => res.json())
             .then(data => setProductos(data.results));
-            setProductosFiltrados(productos);
-            setTitulo("Nuestros modelos");
+        setProductosFiltrados(productos);
+        setTitulo("Nuestros modelos");
     }, []);
 
     useEffect(() => {
@@ -22,11 +23,11 @@ const ItemListContainer = () => {
     });
 
     const changeElementValuesByParam = (param) => {
-        if(param != undefined){
+        if (param != undefined) {
             setTitulo(`Señuelos de ${id.toLowerCase()}`);
-            setProductosFiltrados(productos.filter((producto) => (producto.category === param)));            
-        }else{
-            setTitulo("Nuestros modelos");  
+            setProductosFiltrados(productos.filter((producto) => (producto.category === param)));
+        } else {
+            setTitulo("Nuestros modelos");
             setProductosFiltrados(productos);
         }
     }
@@ -36,19 +37,19 @@ const ItemListContainer = () => {
             <h1 className="text-center spiderPrimaryFont">{titulo}</h1>
             <ul className="products">
                 {productosFiltrados.map((producto) => {
-                        return (
-                            <li >
-                                <Card
-                                    id={producto.id}
-                                    img={producto.imgUrl}
-                                    name={producto.name}
-                                    description={producto.description}
-                                    price={producto.price}
-                                    isDetail={false} />
-                            </li>
-                        );
-                    })
-                    }
+                    return (
+                        <li >
+                            <Card
+                                id={producto.id}
+                                img={producto.imgUrl}
+                                name={producto.name}
+                                description={producto.description}
+                                price={producto.price}
+                                isDetail={false} />
+                        </li>
+                    );
+                })
+                }
             </ul>
         </div>
     );

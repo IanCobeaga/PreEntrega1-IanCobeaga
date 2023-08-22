@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
-        <nav className="navbar navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-dark bg-dark sticky-top">
             <div className="container-fluid">
                 <Link to="/" type="button" className="navbar-brand nav-btn">
                     <img alt="logo" src="https://i.ibb.co/BtJthmd/spider-logo.png"

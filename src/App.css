@@ -19,7 +19,7 @@
 }
 
 .top-space{
-    padding-top: 100px;
+    padding-top: 30px;
 }
 
 .cart:hover{
@@ -42,6 +42,15 @@
         )
     );
     gap: 16px;
+    padding: 0px 32px 0px 32px;
+}
+
+.product-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 32px;
 }
 
 .d-flex-card{
@@ -61,10 +70,9 @@
 } 
 .spiderPrimaryFont{
   font-family: 'CrilleeBoldItalicStdRegular';
-  color: #fff;
 } 
+
 /* 
 body{
     background-image: url("https://i.pinimg.com/originals/8c/06/17/8c0617017ae715c5ffe0817d53cdcf00.jpg");
-
 } */

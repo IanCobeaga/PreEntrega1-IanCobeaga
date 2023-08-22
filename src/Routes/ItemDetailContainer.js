@@ -1,37 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "../Components/Card";
+import { enviroment } from "../enviroments/Enviroments";
+import DataFetcher from "../Service/DataFetcher";
 
 const ItemDetailContainer = () => {
 
-    const [producto, setProducto] = useState({});
-    const [titulo, setTitulo] = useState("");
     const { id } = useParams();
-
-    useEffect(() => {
-        fetch(`https://apimocha.com/spideritems/items/${id}`)
-            .then((res) => res.json())
-            .then(data => setProducto(data.item));
-    }, []);
+    const url = `${enviroment.urlItems}/${id}`
 
     return (
-        <>
-            <div className="top-space row row-cols-1 row-cols-md-3 g-4">
-                <div className="col">
-                </div>
-                <div className="col">
-                    <Card
-                        id={producto.id}
-                        img={producto.imgUrl}
-                        name={producto.name}
-                        description={producto.description}
-                        price={producto.price}
-                        isDetail={true} />
-                </div>
-                <div className="col">
-                </div>
-            </div>
-        </>
+        <DataFetcher
+            url={url}
+            render={(data, loading) => {
+                return (
+                    <div>
+                        {loading
+                            ? (<div className="d-flex justify-content-center top-space">
+                                <span>Cargando...</span>
+                                <div className="spinner-border" role="status">
+                                </div>
+                            </div>)
+                            : (<div className="product-item">
+                                <Card
+                                    id={data.item.id}
+                                    img={data.item.imgUrl}
+                                    name={data.item.name}
+                                    description={data.item.description}
+                                    price={data.item.price}
+                                    isDetail={true} />
+                            </div>
+                            )}
+                    </div>
+                )
+            }}
+        />
     );
 };
 
