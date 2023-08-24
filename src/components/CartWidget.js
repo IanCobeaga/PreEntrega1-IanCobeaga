@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import {useCartQuantity} from '../Contexts/CartContext';
 
 const CartWidget = () => {
 
-    const [itemsQuantity, setItemsQuantity] = useState(0);
-
-    const addItemListener = () => {
-        setItemsQuantity(itemsQuantity + 1);
-    }
-
-    const clearChart = () => {
-        setItemsQuantity(0);
-    }
+    const {itemsQuantity, addItem, removeItem, clearChart} = useCartQuantity();
 
     return (
         <div className="">
@@ -29,10 +22,11 @@ const CartWidget = () => {
                     <h1>Contenido del carrito</h1>
                     <div className="text-center">
                         <h5>Articulo</h5>
-                        <button className="btn btn-outline-light" onClick={addItemListener}>add</button>
+                        <button className="btn btn-outline-light" onClick={() => removeItem()}>-</button>
+                        <button className="btn btn-outline-light" onClick={() => addItem()}>+</button>
                     </div>
                 </div>
-                <button className="btn btn-outline-light" onClick={clearChart}>Limpiar carrito</button>
+                <button className="btn btn-outline-light" onClick={() => clearChart()}>Limpiar carrito</button>
             </div>
         </div>
     );

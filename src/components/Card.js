@@ -1,7 +1,11 @@
 import React from "react";
+import {useCartQuantity} from '../Contexts/CartContext'
 import { Link } from "react-router-dom";
 
+
 const Card = ({id, img, name, description, price, isDetail}) => {
+
+    const {addItem} = useCartQuantity();
 
     return (
         <div key={id} className="card h-100">
@@ -13,7 +17,7 @@ const Card = ({id, img, name, description, price, isDetail}) => {
             <div className="card-footer d-flex-card">
                 <small className="text-muted">Precio: ${price}</small>
                 { isDetail 
-                ? <button className="btn btn-outline-dark">Agregar carrito</button>
+                ? <button className="btn btn-outline-dark" onClick={() => addItem()}>Agregar carrito</button>
                 : <Link className="btn btn-outline-dark" to={`/item/${id}`}> Ver detalle</Link>
                 }
             </div>
