@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "../Components/Card";
+import LoadingComponent from "../Components/LoadingComponent";
 import { enviroment } from "../enviroments/Enviroments";
 import DataFetcher from "../Service/DataFetcher";
 
@@ -16,11 +17,7 @@ const ItemDetailContainer = () => {
                 return (
                     <div>
                         {loading
-                            ? (<div className="d-flex justify-content-center top-space">
-                                <span>Cargando...</span>
-                                <div className="spinner-border" role="status">
-                                </div>
-                            </div>)
+                            ? (<LoadingComponent/>)
                             : (<div className="product-item">
                                 <Card
                                     id={data.item.id}
