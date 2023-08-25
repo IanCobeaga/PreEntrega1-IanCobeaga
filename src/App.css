@@ -71,7 +71,11 @@
 .spiderPrimaryFont{
   font-family: 'CrilleeBoldItalicStdRegular';
 } 
-
+@media screen and (max-width:430px) {
+    .home-img{
+        width: -webkit-fill-available;
+     }
+}
 /* 
 body{
     background-image: url("https://i.pinimg.com/originals/8c/06/17/8c0617017ae715c5ffe0817d53cdcf00.jpg");
