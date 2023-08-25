@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "../Components/Card";
-import LoadingComponent from "../Components/LoadingComponent";
+import Card from "../components/Card";
+import LoadingComponent from "../components/LoadingComponent";
 import DataFetcher from "../Service/DataFetcher";
 import { enviroment } from "../enviroments/Enviroments";
 
