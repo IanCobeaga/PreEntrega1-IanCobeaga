@@ -2,17 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import LoadingComponent from "../components/LoadingComponent";
-import { enviroment } from "../enviroments/Enviroments";
-import DataFetcher from "../Service/DataFetcher";
+import DataFetcherItem from "../Service/DataFetcherItem";
 
 const ItemDetailContainer = () => {
 
     const { id } = useParams();
-    const url = `${enviroment.urlItems}/${id}`
 
     return (
-        <DataFetcher
-            url={url}
+        <DataFetcherItem
+            id={id}
             render={(data, loading) => {
                 return (
                     <div>
@@ -20,11 +18,7 @@ const ItemDetailContainer = () => {
                             ? (<LoadingComponent/>)
                             : (<div className="product-item">
                                 <Card
-                                    id={data.item.id}
-                                    img={data.item.imgUrl}
-                                    name={data.item.name}
-                                    description={data.item.description}
-                                    price={data.item.price}
+                                    productData={data}
                                     isDetail={true} />
                             </div>
                             )}

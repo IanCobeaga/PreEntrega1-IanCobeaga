@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import LoadingComponent from "../components/LoadingComponent";
-import DataFetcher from "../Service/DataFetcher";
-import { enviroment } from "../enviroments/Enviroments";
+import DataFetcherItemList from "../Service/DataFetcherItemList";
 
 const ItemListContainer = () => {
 
     const [titulo, setTitulo] = useState("");
     const [filtrado, setfiltrado] = useState(false);
     const { id } = useParams();
-    const url = `${enviroment.urlItems}`;
-
 
     useEffect(() => {
         changeElementValuesByParam(id);
@@ -36,14 +33,9 @@ const ItemListContainer = () => {
     const mapingProducts = (productList) => {
         let productosFiltrados = filtrarCategoria(productList);
         let productos = productosFiltrados.map((producto) => {
-            console.log(id);
             return (<li >
                 <Card
-                    id={producto.id}
-                    img={producto.imgUrl}
-                    name={producto.name}
-                    description={producto.description}
-                    price={producto.price}
+                    productData={producto}
                     isDetail={false} />
             </li>
             )
@@ -56,14 +48,13 @@ const ItemListContainer = () => {
         <div className="top-space">
             <h1 className="text-center spiderPrimaryFont">{titulo}</h1>
             {(
-                <DataFetcher
-                    url={url}
+                <DataFetcherItemList
                     render={(data, loading) => {
                         return (
                             <div>
                                 {loading
                                     ? ((<LoadingComponent />))
-                                    : (<ul className="products">{mapingProducts(data.results)}</ul>)
+                                    : (<ul className="products">{mapingProducts(data)}</ul>)
                                 }
                             </div>
                         )
