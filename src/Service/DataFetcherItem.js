@@ -15,7 +15,6 @@ const DataFetcher = ({ id, render }) => {
                 .then((snapshot) => {
                     if (snapshot.exists()) {
                         setData({ id: snapshot.id, ...snapshot.data() });
-                        console.log(data);
                         setLoading(false);
                         
                     }

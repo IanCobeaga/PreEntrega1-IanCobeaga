@@ -15,7 +15,7 @@ const ItemListContainer = () => {
     });
 
     const changeElementValuesByParam = (param) => {
-        if (param != undefined) {
+        if (param !== undefined) {
             setTitulo(`Señuelos de ${id.toLowerCase()}`);
             setfiltrado(true);
         } else {
@@ -33,12 +33,13 @@ const ItemListContainer = () => {
     const mapingProducts = (productList) => {
         let productosFiltrados = filtrarCategoria(productList);
         let productos = productosFiltrados.map((producto) => {
-            return (<li >
-                <Card
+            return (
+                <li key={producto.id} >
+                    <Card
                     productData={producto}
                     isDetail={false} />
-            </li>
-            )
+                </li>
+            );
         })
 
         return productos;
