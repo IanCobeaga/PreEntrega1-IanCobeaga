@@ -36,6 +36,16 @@
     border: none;
 }
 
+.card{
+    background-image: linear-gradient( to left,  rgba(0,0,0,1) 9.2%, rgb(196, 2, 2) 103.9% );
+    border: 2px solid white !important;
+}
+
+.card-body{
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
 .cart:hover{
     box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width)
 }
@@ -86,6 +96,10 @@
     color: #fff;
 } 
 
+.decrementBtn:hover{
+    color: #000
+}
+
 @media screen and (max-width:430px) {
     .home-img{
         width: -webkit-fill-available;
@@ -108,9 +122,58 @@
     width: max-content;
 }
 
-.imgStyle{
-    border-radius: 6px;
-}
 .cartItemText{
     padding-left: 8px;
+}
+
+.dropdown-menu.show{
+    background-image: linear-gradient( to left,  rgba(0,0,0,1) 9.2%, rgb(196, 2, 2) 103.9% );
+    border: 2px solid white;
+    width: 260px;
+}
+
+.itemResult{
+    background-image: linear-gradient( to left,  rgba(0,0,0,1) 9.2%, #2D3436 103.9% );
+    border: 1px solid white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: -webkit-fill-available;
+}
+
+.imgStyle{
+    border: 1px solid white;
+    border-radius: 6px;
+}
+
+.noUnderline{
+    text-decoration: none;
+}
+
+.categoryStyle p:hover{
+    color:black
+}
+
+.itemResultText{
+    color: white;
+    padding-left: 8px;
+}
+
+.flexCheckout{
+    display: flex!important;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon-styles a{
+    color:#fff
+}
+
+.icon-styles a:hover{
+    color:#000
 }

@@ -14,7 +14,7 @@ const DataFetcher = ({ id, render }) => {
             getDoc(itemRef)
                 .then((snapshot) => {
                     if (snapshot.exists()) {
-                        setData({ id: snapshot.id, ...snapshot.data() });
+                        setData({ id: snapshot.id, ...snapshot.data(), quantity: 0, pricePerQuantity: 0 });
                         setLoading(false);
                         
                     }

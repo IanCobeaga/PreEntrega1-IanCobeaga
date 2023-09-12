@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
             id={id}
             render={(data, loading) => {
                 return (
-                    <div>
+                    <div className="mb-4">
                         {loading
                             ? (<LoadingComponent/>)
                             : (<div className="product-item">

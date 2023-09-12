@@ -13,7 +13,9 @@ const DataFetcher = ({ render }) => {
             
             getDocs(itemsCollection)
                 .then((snapshot) => {
-                        const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                        const docs = snapshot.docs.map((doc) => (
+                            { id: doc.id, ...doc.data(), quantity: 0, pricePerQuantity: 0 }
+                        ));
                         setData(docs);
                         setLoading(false);
                 })
