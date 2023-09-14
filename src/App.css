@@ -164,9 +164,7 @@
 
 .flexCheckout{
     display: flex!important;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
 }
 

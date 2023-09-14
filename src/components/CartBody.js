@@ -43,7 +43,7 @@ const CartBody = () => {
                                     <li 
                                         key={item.id}
                                         style={{paddingBottom: "10px"}}>
-                                        <CartItem id={item.id}/>
+                                        <CartItem item={item}/>
                                     </li>
                                 ))
                             }

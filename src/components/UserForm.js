@@ -1,25 +1,33 @@
 import React from "react"; 
 
-const UserForm = () => {
+const UserForm = ({buildBuyer}) => {
+
+    const buildBuyerByForm = () => {
+        let name = document.getElementById('fullname').value;
+        let phone = document.getElementById('phone').value;
+        let email = document.getElementById('email').value;
+        buildBuyer(name, phone, email);
+    }
+
     return (
-        <form>
+        <form className='flexCheckout mb-2'>
+            <h3>Debe completar el formulario para poder finalizar la compra</h3>
             <div className="mb-3">
                 <label htmlFor="fullname" className="form-label">Nombre completo</label>
-                <input type="text" className="form-control" id="fullname" placeholder="Escriba su nombre..."/>
+                <input type="text" required="true" className="form-control" id="fullname" placeholder="Escriba su nombre..."/>
             </div>
             <div className="mb-3">
-                <label htmlFor="dni" className="form-label">Número de documento</label>
-                <input type="number" className="form-control" id="dni" placeholder="Escriba su DNI..." />
+                <label htmlFor="phone" className="form-label">Teléfono</label>
+                <input type="number" required="true" className="form-control" id="phone" placeholder="Escriba su número telefónico..." />
             </div>
             <div className="mb-3">
                 <label htmlFor="email" className="form-label">Email</label>
-                <input type="email" className="form-control" id="email" placeholder="Escriba su email..."/>
+                <input type="email" required="true" className="form-control" id="email" placeholder="Escriba su email..."/>
             </div>
-            <div className="mb-3">
-                <label htmlFor="password" className="form-label">Contraseña</label>
-                <input type="password" className="form-control" id="password" placeholder="Escriba su contraseña..."/>
-            </div>
-            <button id="submitUser" hidden={true} type="submit">Submit</button>
+            <button id="submitUser" 
+            className="btn btn-outline-light"
+            onClick={() => buildBuyerByForm()}>
+                Guardar comprador</button>
         </form>
     );
 }; 

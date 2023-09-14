@@ -7,10 +7,12 @@ const CartItemsQuantityProvider = ({children}) => {
     const [itemsQuantity, setItemsQuantity] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [cartItemsQuantity, setCartItemsQuantity] = useState([]);
+    const [cartItemsQuantityAux, setCartItemsQuantityAux] = useState([]);
 
     useEffect(() => {
         sumTotalPrice();
-    }, [cartItemsQuantity]);
+        setCartItemsQuantity(cartItemsQuantityAux);
+    });
 
     const findItemById = (id) => {
         let itemToReturn = undefined;
@@ -27,6 +29,7 @@ const CartItemsQuantityProvider = ({children}) => {
 
     const removeItemById = (id) => {
         setCartItemsQuantity((prev) => prev.filter((item) => item.id !== id));
+        setCartItemsQuantityAux((prev) => prev.filter((item) => item.id !== id));
         setItemsQuantity(itemsQuantity - 1);
     }
   
@@ -37,7 +40,7 @@ const CartItemsQuantityProvider = ({children}) => {
     }
 
     const updatePrice = (id, quan) => {
-        setCartItemsQuantity(cartItemsQuantity.map((item) => {
+        let cartUpdated = (cartItemsQuantity.map((item) => {
             if(findItemById(id)){
                 return {
                     ...item,
@@ -46,8 +49,8 @@ const CartItemsQuantityProvider = ({children}) => {
                 } 
             }    
         }));
-        
-        console.log(cartItemsQuantity[0])
+        setCartItemsQuantityAux(cartUpdated)
+        console.log(cartUpdated)
     }
 
     const sumTotalPrice = () => {
