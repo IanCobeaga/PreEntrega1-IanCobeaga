@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 const CartBody = () => {
 
-    const {clearCartItems, cartItemsQuantity, totalPrice} = useCartItemsQuantity();
+    const {clearCartItems, cartItemsQuantity, sumTotalPrice} = useCartItemsQuantity();
+    const [total, setTotal] = useState(0);
     const [showButtons, setShowButtons] = useState('none');
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const CartBody = () => {
                 document.getElementById('dummyDiv').style.display = 'none';
                 setShowButtons('none');
         }
-        
+        setTotal(sumTotalPrice());
     }, [cartItemsQuantity]);
 
     const automaticClick = () => {
@@ -53,7 +54,7 @@ const CartBody = () => {
                     </div>
                 </div>
                 <div id="endShopOrCleanCart" style={{display:showButtons}}>
-                    <h4 className="spiderPrimaryFont text-center">TOTAL: ${totalPrice}</h4>
+                    <h4 className="spiderPrimaryFont text-center">TOTAL: ${total}</h4>
                     <Link className="btn btn-outline-light mb-2" to="/checkout" onClick={() => automaticClick()}>Finalizar compra</Link>
                     <button className="btn btn-outline-light" onClick={() => clearCartItems()}>Limpiar carrito</button>
                 </div>

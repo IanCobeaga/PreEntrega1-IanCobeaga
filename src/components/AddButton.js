@@ -8,7 +8,6 @@ const Addbutton = ({productData}) => {
 
     useEffect(() => {
         let itemToFind = findItemById(productData.id)
-        
         if(itemToFind != undefined){
             setAdded(true);
         }else{
@@ -17,7 +16,13 @@ const Addbutton = ({productData}) => {
     });
     
     return ((!added)
-        ? <button className="btn btn-outline-light" onClick={() => addItem(productData)}>Agregar carrito</button>
+        ? <button className="btn btn-outline-light" onClick={() => 
+            addItem({
+                ...productData, 
+                quantity: 1,
+                pricePerQuantity: productData.price
+            }
+        )}>Agregar carrito</button>
         : <></>
         )
 }

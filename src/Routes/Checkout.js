@@ -6,15 +6,20 @@ import LoadingComponent from '../components/LoadingComponent';
 import { useCartItemsQuantity } from '../Contexts/CartItemsContext';
 import { getFirestore, collection, addDoc, Timestamp } from 'firebase/firestore';
 const Checkout = () => {
-  const { clearCartItems, cartItemsQuantity, totalPrice } = useCartItemsQuantity();
+  const { clearCartItems, cartItemsQuantity, sumTotalPrice } = useCartItemsQuantity();
   const [purchase, setPurchase] = useState({});
   const [buyer, setBuyer] = useState({});
+  const [total, setTotal] = useState(0);
   const [purchaseEnded, setPurchaseEnded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setTotal(sumTotalPrice());
+  }, [sumTotalPrice]);
+
+  useEffect(() => {
     buildPurchase();
-  });
+  }, [buyer, cartItemsQuantity, total]);
 
   const esObjetoBuyerVacio = (Buyer) => {
     return Object.keys(Buyer).length === 0;
@@ -29,8 +34,9 @@ const Checkout = () => {
       return {
         id: item.id,
         name: item.name,
-        price: item.pricePerQuantity,
-        quantity: item.quantity
+        pricePerUnity: item.price,
+        quantity: item.quantity,
+        finalPrice: item.pricePerQuantity,
       }
     });
   }
@@ -40,7 +46,7 @@ const Checkout = () => {
       buyer: buyer,
       items: buildItems(),
       date: Timestamp.now(),
-      total: totalPrice
+      total: total
     });
   }
 
@@ -53,6 +59,14 @@ const Checkout = () => {
     setTimeout(() => {
       navigate("/items");
     }, 3000);
+  }
+
+  const cancelarCompra = () => {
+    alert("Compra cancelada");
+    setTimeout(() => {
+      clearCartItems();
+      navigate("/items");
+    }, 2000);
   }
 
   return (
@@ -78,9 +92,9 @@ const Checkout = () => {
                   </ul>
                 </div>
                 <div id="endShopOrCleanCart" className="mb-2">
-                  <h4 className="spiderPrimaryFont">TOTAL: ${totalPrice}</h4>
+                  <h4 className="spiderPrimaryFont">TOTAL: ${total}</h4>
                   <a className="btn btn-outline-light mx-2" onClick={() => endPurchase()}>Finalizar compra</a>
-                  <button className="btn btn-outline-light" onClick={() => clearCartItems()}>Limpiar carrito</button>
+                  <button className="btn btn-outline-light" onClick={() => cancelarCompra()}>Cancelar compra</button>
                 </div>
               </div>)
               : <UserForm buildBuyer={buildBuyer} />}

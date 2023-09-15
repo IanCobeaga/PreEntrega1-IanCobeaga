@@ -5,14 +5,7 @@ const CartItemsContext = React.createContext();
 const CartItemsQuantityProvider = ({children}) => {
 
     const [itemsQuantity, setItemsQuantity] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
     const [cartItemsQuantity, setCartItemsQuantity] = useState([]);
-    const [cartItemsQuantityAux, setCartItemsQuantityAux] = useState([]);
-
-    useEffect(() => {
-        sumTotalPrice();
-        setCartItemsQuantity(cartItemsQuantityAux);
-    });
 
     const findItemById = (id) => {
         let itemToReturn = undefined;
@@ -29,43 +22,37 @@ const CartItemsQuantityProvider = ({children}) => {
 
     const removeItemById = (id) => {
         setCartItemsQuantity((prev) => prev.filter((item) => item.id !== id));
-        setCartItemsQuantityAux((prev) => prev.filter((item) => item.id !== id));
         setItemsQuantity(itemsQuantity - 1);
     }
   
     const clearCartItems = () => {
         setCartItemsQuantity([]);
         setItemsQuantity(0);
-        setTotalPrice(0);
     }
 
     const updatePrice = (id, quan) => {
-        let cartUpdated = (cartItemsQuantity.map((item) => {
-            if(findItemById(id)){
+        setCartItemsQuantity((cartItemsQuantity.map((item) => {
+            if(item.id === id){
                 return {
                     ...item,
                     quantity: quan, 
                     pricePerQuantity: item.price * quan  
-                } 
+                }
+            } else{
+                return item;
             }    
-        }));
-        setCartItemsQuantityAux(cartUpdated)
-        console.log(cartUpdated)
+        })));
     }
 
     const sumTotalPrice = () => {
-        let acum = 0
-        cartItemsQuantity.forEach((item) => {
-            acum = acum + item.pricePerQuantity
-        });
-        setTotalPrice(acum);
+        return cartItemsQuantity.reduce((acc, item) => acc + item.pricePerQuantity, 0);
     }
 
     return (
         <CartItemsContext.Provider 
         value=
-        {{cartItemsQuantity, itemsQuantity, totalPrice, 
-        findItemById, sumTotalPrice, setCartItemsQuantity, updatePrice,
+        {{cartItemsQuantity, itemsQuantity, findItemById,
+             sumTotalPrice, setCartItemsQuantity, updatePrice,
         addItem, clearCartItems, removeItemById}}>
             {children}
         </CartItemsContext.Provider>

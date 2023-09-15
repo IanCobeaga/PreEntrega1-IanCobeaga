@@ -3,18 +3,13 @@ import { useCartItemsQuantity } from '../Contexts/CartItemsContext';
 
 const CartItem = ({ item }) => {
 
-    const { removeItemById, updatePrice, findItemById, cartItemsQuantity } = useCartItemsQuantity();
+    const { removeItemById, updatePrice, findItemById } = useCartItemsQuantity();
     const [itemQuantity, setItemQuantity] = useState(1);
-    const [itemPrice, setItemPrice] = useState(0);
     const [showDecrement, setShowDecrement] = useState(false);
-   
-    useEffect(() => { 
-        updatePrice(item.id, itemQuantity);
-    },[])
 
-    useEffect(() => { 
-        setItemPrice(item.price);
-    })
+    useEffect(() => {
+        setItemQuantity(findItemById(item.id).quantity);
+    }, [])
 
     useEffect(() => {
         let decrementBtn = document.getElementById("decrementBtn");
@@ -26,7 +21,6 @@ const CartItem = ({ item }) => {
             setShowDecrement(false);
         }
         updatePrice(item.id, itemQuantity);
-        setItemPrice(findItemById(item.id).pricePerQuantity);
     }, [itemQuantity])
 
     const incrementItem = () => {
@@ -48,9 +42,9 @@ const CartItem = ({ item }) => {
             className="btn btn-outline-light mx-2" onClick={() => decrementItem()}>
                 <span style={{color:(showDecrement) ? "": "transparent"}}>-</span>
             </button>
-            <h6>{itemQuantity}</h6>
+            <h6>{item.quantity}</h6>
             <button className="btn btn-outline-light mx-2" onClick={() => incrementItem()}>+</button>
-            <h5>${itemPrice}</h5>
+            <h5>${item.pricePerQuantity}</h5>
             <button className="btn btn-outline-light mx-2" onClick={() => removeItemById(item.id)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />

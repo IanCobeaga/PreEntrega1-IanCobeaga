@@ -9,7 +9,6 @@ const Buscador = () => {
     const [hideResult, setHideResult] = useState(false);
     const [inputTitle, setInputTitle] = useState("");
     
-
     const inputTitleHandler = (e) => {
         setInputTitle(e.target.value);
     }
