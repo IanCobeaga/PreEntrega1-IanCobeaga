@@ -14,7 +14,7 @@ const Checkout = () => {
 
   useEffect(() => {
     buildPurchase();
-  }, [])
+  });
 
   const esObjetoBuyerVacio = (Buyer) => {
     return Object.keys(Buyer).length === 0;
@@ -87,7 +87,7 @@ const Checkout = () => {
           </>
         </div>)
         : (<div className='top-space text-center spiderPrimaryFont mb-2'>
-          <h1>Gracias {buyer}!</h1>
+          <h1>Gracias {buyer.name}!</h1>
           <h3>En breve se redirigirá hacia el catalogo. </h3>
           <LoadingComponent end={true} />
         </div>)}

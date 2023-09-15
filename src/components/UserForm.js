@@ -10,7 +10,7 @@ const UserForm = ({buildBuyer}) => {
     }
 
     return (
-        <form className='flexCheckout mb-2'>
+        <form onSubmit={() => buildBuyerByForm()} className='flexCheckout mb-2'>
             <h3>Debe completar el formulario para poder finalizar la compra</h3>
             <div className="mb-3">
                 <label htmlFor="fullname" className="form-label">Nombre completo</label>
@@ -25,8 +25,7 @@ const UserForm = ({buildBuyer}) => {
                 <input type="email" required="true" className="form-control" id="email" placeholder="Escriba su email..."/>
             </div>
             <button id="submitUser" 
-            className="btn btn-outline-light"
-            onClick={() => buildBuyerByForm()}>
+            className="btn btn-outline-light">
                 Guardar comprador</button>
         </form>
     );
