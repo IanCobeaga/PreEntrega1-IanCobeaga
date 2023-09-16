@@ -1,4 +1,22 @@
+.page-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 87vh;
+}
+.offcanvasStyle {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    z-index: 1; 
+}
+
 .footer-style{
+    margin-top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
     border-top: #fff solid 2px;
     background-image: linear-gradient( to left,  rgba(0,0,0,1) 9.2%, rgb(196, 2, 2) 103.9% );
 }
@@ -116,10 +134,9 @@
     border-radius: 6px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
-    width: max-content;
 }
 
 .cartItemText{

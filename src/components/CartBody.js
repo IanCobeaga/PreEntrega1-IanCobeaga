@@ -30,7 +30,7 @@ const CartBody = () => {
 
     return (
         <>
-            <div className="offcanvas offcanvas-end text-bg-dark gradient-style" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div className="offcanvas offcanvas-end offcanvasStyle text-bg-dark gradient-style" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div className="offcanvas-header">
                     <button type="button" id="closeBtn" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>

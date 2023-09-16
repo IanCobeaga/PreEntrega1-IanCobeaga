@@ -15,18 +15,20 @@ function App() {
 
   return (
       <>
-        <CartItemsQuantityProvider>
-          <BrowserRouter>
-            <NavBar />
-            <Routes>
-              <Route exact path="/" element={<Home/>} />
-              <Route exact path="/items" element={<ItemListContainer/>}/>
-              <Route exact path="/items/:id" element={<ItemListContainer/>}/>
-              <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
-              <Route exact path="/checkout" element={<Checkout />}/>
-            </Routes>
-          </BrowserRouter>
-        </CartItemsQuantityProvider>
+        <div className="page-content">
+          <CartItemsQuantityProvider>
+            <BrowserRouter>
+              <NavBar />
+              <Routes>
+                <Route exact path="/" element={<Home/>} />
+                <Route exact path="/items" element={<ItemListContainer/>}/>
+                <Route exact path="/items/:id" element={<ItemListContainer/>}/>
+                <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
+                <Route exact path="/checkout" element={<Checkout />}/>
+              </Routes>
+            </BrowserRouter>
+          </CartItemsQuantityProvider>
+        </div>
         <Footer />
       </>
   );
