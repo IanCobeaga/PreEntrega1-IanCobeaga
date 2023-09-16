@@ -39,8 +39,23 @@ Mi nombre es Ian Leonel Cobeaga, soy un desarrollador junior que busca especiali
 
 Por ultimo, se abrirá tu navegador predeterminado, corriendo la aplicación en el puerto [3000](http://localhost:3000).
 
-![Alt text](image-3.png)
+![Alt text](./documentacion/image-3.png)
 
 ## Flujo de la aplicación
+
+Se deja una demo de como es el flujo del proyecto, donde se abarcan las siguientes funcionalidades:
+
+* **Navegabilidad sugerida en los requerimientos del proyecto**
+* **Renderizado de todos los productos obtenidos de la BD**
+* **Filtrado de productos por categorias**
+* **Vista individual del producto**
+* **Renderizados condicionales (boton agregar carrito - componente de carga - entre otros)**
+* **Estilos implementados con bootstrap v5.3 - (offCanvas para el carrito - footer con redes sociales oficiales - entre otros)**
+* **Buscador con componente dropdown renderizando los objetos matcheados**
+* **Contabilizador del precio total del producto y del precio total de la compra**
+* **Guardado de la compra en la BD con los datos sugeridos en los requerimientos del proyecto**
+
+
+![Alt text](./documentacion/GIF%20-%20Entrega%20Final%20-%20IanCobeaga.gif)
 
 
