@@ -11,22 +11,36 @@ Mi nombre es Ian Leonel Cobeaga, soy un desarrollador junior que busca especiali
 **[Ian Leonel Cobeaga](https://www.linkedin.com/in/iancobeaga/)**
 ## Instalación
 
-In the project directory, you can run:
+* Un pre-requisito es tener instalado como minimo la v18.17.0 de node.js (La versión utilizada en este proyecto).
+1) iremos hacia el [repositorio del proyecto](https://github.com/IanCobeaga/PreEntrega1-IanCobeaga). 
 
-### `npm start`
+    
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Luego como indica la imagen de aquí abajo, nos dirigimos hacia el boton code, donde se desplegará un menu donde nos permitirá copiar la url del proyecto.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ![Alt text](./documentacion/image-1.png)
 
-### `npm test`
+2) En la consola de tu preferencia (cmd, powershell, bash), ubicandote en el directorio que desees pondrás el comando `git clone https://github.com/IanCobeaga/PreEntrega1-IanCobeaga`, esto traera todos los archivos del proyecto para correrlos y modificarlos localmente. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Por ultimo, el comando `npm install`, dentro del mismo directorio (siempre revisar en que directorio estamos parados), que será el encargado de instalar todas las dependencias de node que se encuentran en el package.json. Generando la carpeta node_modules.
+
+
+## Ejecución
+
+ La ejecución se realizará colocando el comando `npm start` (ya que es el configurado por default en node/react.js) dentro del mismo directorio del proyecto.
+
+![Alt text](./documentacion/image-4.png)
+
+![Alt text](./documentacion/image-5.png)
+
+ Debe quedar algo así:
+
+ ![Alt text](./documentacion/image-2.png)
+
+Por ultimo, se abrirá tu navegador predeterminado, corriendo la aplicación en el puerto [3000](http://localhost:3000).
+
+![Alt text](image-3.png)
 
 ## Flujo de la aplicación
-
 
 
